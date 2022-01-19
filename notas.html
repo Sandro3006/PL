@@ -1,0 +1,64 @@
+
+<html lang="en">
+<body>
+    <center>
+    <script language="javascript">
+
+        notas = new Array(40);
+        var mediaAlta = 0;
+        var notaTotal = 0;
+        var aprovados = 0;
+       for (var ii = 0; ii < notas.length; ii++) {
+            notas[ii] = parseFloat(window.prompt("Digite a " + (ii+1) + "° media final:"));
+            
+            notaTotal = notas[ii]+notaTotal;
+ 
+        }
+        for (ii = 0; ii < notas.length; ii++) {
+
+            if (notas[ii] > notaTotal / notas.length) {
+                mediaAlta++;
+            }
+            if (notas[ii] >= 6) {
+                    aprovados++;
+            }
+     
+        }
+
+
+        document.write("<table border='3'>");
+        document.write("<tr><td colspan='3'>Media Global da turma: </td>");
+        document.write("<td colspan='1' align='center'>" + notaTotal / 40 + "</td></tr>");
+        document.write("<tr><td colspan='3'>Alunos acima da media: </td>");
+        document.write("<td colspan='1' align='center'>" + mediaAlta + "</td></tr>");
+        document.write("<tr><td colspan='3' >Percentual de aprovados: </td>");   
+        document.write("<td colspan='1' align='center'>" + aprovados / 40 * 100 + "%</td></tr>");  
+        
+        document.write("<tr><td> Aluno</td>");
+        document.write("<td align='center'> Media Final</td>");
+        document.write("<td align='center'>Visual Indicativo</td>");
+        document.write("<td width='150' align='center' >Pontos Faltantes</td></tr>");
+
+        for (var i = 0; i < notas.length; i++) {
+            document.write('<tr><td align="center">' + (i+1) + '</td>');
+            document.write('<td>' + notas[i] + '</td>');  
+            
+            if(notas[i] < 6)
+            {
+                document.write("<td align='center'><img src='NEGATIVO.png' width='40' heigth='40'></td>");
+                nt = 6 - notas[i]
+                document.write("<td align='center' width='150'>" + nt + "</td>");
+                
+            }
+            else
+            {
+                document.write("<td align='center'><img src='POSITIVO.png' width='40' heigth='40'></td>");
+                document.write("<td align='center' width='150'>X</td>");
+            }
+        }
+
+        document.write("</table>");
+        document.write(notaTotal);
+    </script>
+</body>
+</html>
